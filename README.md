@@ -23,9 +23,9 @@ Open **http://127.0.0.1:5289/**. Stop the server with Ctrl+C.
 
 Open the **•••** corner controls (or press **?**) and select **Play slideshow**. Press **P** anywhere outside an input to pause or resume. Set **Seconds per slide** to any whole number from **3 to 120**; the default is **12 seconds**. The setting applies immediately and restarts the current slide's countdown. Buttons and the interval field work with Tab, Enter/Space and the number-input arrow keys.
 
-To start automatically, open **http://127.0.0.1:5289/?autoplay=1&interval=12** (or append `?autoplay=1&interval=12` to the local `index.html` file URL). Change `interval` to your preferred seconds; invalid values default to 12 and out-of-range values are clamped. Opening the ordinary URL starts paused. Autoplay repeats from slide 62 to slide 1; manual navigation gives the selected slide a full interval. A hidden/background tab suspends the timer and starts a fresh interval when visible again. Overview and printing pause playback; press P or Play to resume. Fullscreen preserves playback and requires F or the Full screen button. Browser security prevents automatic fullscreen on page load.
+To start automatically, open **http://127.0.0.1:5289/?autoplay=1&interval=12** (or append `?autoplay=1&interval=12` to the local `index.html` file URL). Change `interval` to your preferred seconds; invalid values default to 12 and out-of-range values are clamped. Opening the ordinary URL starts paused. Autoplay visits the 20 narrative slides, then each of the 42 gallery captures, then repeats from slide 1. Every capture gets the configured interval. Manual narrative navigation resets the countdown; gallery swipes, navigation, keyboard browsing or focus pause playback until P or Play resumes it. A hidden/background tab suspends the timer and starts a fresh interval when visible again. Overview and printing pause playback; press P or Play to resume. Fullscreen preserves playback and requires F or the Full screen button. Browser security prevents automatic fullscreen on page load.
 
-Controls remain hidden until hover, focus, tap or **?**. Autoplay adds no persistent toolbar. PowerPoint and PDF preserve the same 62-slide content and background; the browser playback controls apply to HTML only.
+Controls remain hidden until hover, focus, tap or **?**. Autoplay adds no persistent toolbar. PowerPoint and PDF preserve the 20 narrative slides and add seven curated workflow contact sheets (27 pages total). The interactive HTML has 21 deck slides: 20 narrative slides plus one Swiper gallery containing all 42 captures. Static exports cannot swipe or autoplay; all originals remain in the bundle for detailed inspection. Use the supplied PDF for printing; the HTML Print control opens that static export.
 
 ## Open
 
@@ -34,7 +34,7 @@ Controls remain hidden until hover, focus, tap or **?**. Autoplay adds no persis
 - **`CC-Student-Management.pdf`** — rendered PowerPoint for easy viewing and sharing.
 - **`gallery.html`** — all 42 captured page and role views at full resolution.
 
-The deck has **20 narrative slides + 42 screenshot appendix slides**. It incorporates the full supplied gallery and one additional captured cancellation notification, for **43 unique source screenshots**. The appendix intentionally includes role-specific views, expanded forms and guard states as well as routed pages. Redirect aliases and dormant election services are documented rather than represented by invented screens.
+The browser deck has **20 narrative slides + 1 interactive gallery slide**, organized into **7 workflows / 42 screenshots**. PowerPoint and PDF have **27 slides/pages** (20 narrative + 7 contact sheets). It incorporates the full supplied gallery and one additional captured cancellation notification, for **43 unique source screenshots**. The appendix intentionally includes role-specific views, expanded forms and guard states as well as routed pages. Redirect aliases and dormant election services are documented rather than represented by invented screens.
 
 All slides share the cover’s dark blue-teal background (`#182a2c`). The slide canvas fills the available viewport with no reserved toolbar space or gray gutters. A discreet **•••** button in the bottom-right corner reveals controls on hover, keyboard focus or tap. Press **?** to open controls and shortcut help; **Esc** closes the panel. Use **Left/Right** or **Space** to move, **O** for overview and **F** for actual deck fullscreen. The panel also contains slide selection, Print and the PowerPoint download. Browser F11 is a separate browser fullscreen command; the canvas adapts in either mode. Select a screenshot to open the uncropped original. On a phone, long slides remain vertically scrollable. PowerPoint speaker notes give presentation context and implementation qualifications.
 
@@ -51,7 +51,7 @@ The internal account role `founder` means **teacher**. A student club founder st
 
 ## Edit and rebuild
 
-Edit `slides.json` for narrative content. HTML styling and interactions live in `styles.css` and `presentation.js`. `scripts/build.py` creates HTML and PowerPoint from the same data, copies screenshots, prepares high-resolution cropped previews and appends the complete gallery. Full-page originals are preserved.
+Edit `slides.json` for narrative content. HTML styling and interactions live in `styles.css` and `presentation.js`. `scripts/build.py` creates HTML and PowerPoint from the same data, copies screenshots, prepares high-resolution cropped previews and builds the interactive gallery and seven static workflow contact sheets. Edit `workflows.json` for chapter order and evidence captions; every screenshot must occur exactly once. `static-data.json` describes the exported pages. Full-page originals are preserved.
 
 ```bash
 python -m venv .venv
@@ -65,14 +65,16 @@ The bundled ZIP excludes the Python environment and browser session data. It inc
 
 ## Evidence and limits
 
-Verified on 2026-11-10:
-
-- Source review against the current app router, Express API, schema/service and handoff. See `SOURCES.md`.
-- HTML: all 62 slides checked for the shared blue background, full viewport coverage, missing images and content overflow at 1920 × 1080 and 2400 × 1350, in both windowed and actual fullscreen modes. A fresh `viewport: null` context also confirmed native viewport sizing. Hidden controls were checked with hover, keyboard focus, touch and Escape. Eight representative slide types checked at 390 × 844.
-- PowerPoint: archive integrity, slide/image counts and editable text checked; LibreOffice rendered all 62 slides to PDF. Narrative pages and appendix contact sheets were visually reviewed.
-- HTML print: Chromium generated a separate 62-page PDF locally (excluded from the published repository).
-- Release verification: see `verification/release-validation.json` for fresh-checkout autoplay, layout, artifact, asset and packaging checks. Historical review images, browser sessions and local scratch outputs are excluded from Git and the portable ZIP.
+Verified on 2026-11-10; see `verification/release-validation.json` for the current release checks. The checks cover local assets, all 42 gallery captures, preservation of the 20 narrative slides, PowerPoint/PDF page counts and exact background, desktop/fullscreen/mobile layout, keyboard/touch navigation, interaction pausing, autoplay sequencing and an offline fresh checkout. Historical validation images and browser sessions are excluded from Git and the ZIP.
 
 These checks validate the presentation artifacts. They do **not** rerun or certify the application's tests. Application integration/browser test results belong to the original project's `docs/HANDOFF.md` and verification artifacts. No application code, databases, credentials or visible browser sessions were changed by the presentation build.
 
 The cancellation selector is empty after the recorded cancellation workflow. Access-denied and missing-club screenshots are intentional guard examples. Fixture dates and names are demonstration content. Photos and comments are captured UI states; the presentation is not a live backend.
+
+## Workflow gallery controls and offline dependencies
+
+On slide 21, select a workflow in the left rail (horizontal scroll on phones), use the gallery arrow buttons, swipe, or press Left/Right, PageUp/PageDown or Space to browse captures. Home/End select the first/last capture. These keys stay inside the gallery; use the corner slide selector or Previous button to return to the narrative. Captions, roles, global capture count and chapter position update together. Every image links to its uncropped original. P, F, O and ? retain their presentation meanings. Tab reaches workflow buttons, the focused gallery and the active original-image link; inactive captures are inert. Reduced-motion preference removes transitions. Playback pauses when a reader touches or focuses the gallery, so it cannot move away during inspection. Resume with P or the corner Play button.
+
+Swiper **11.2.10** is vendored in `assets/vendor/swiper-11.2.10/` with its MIT license. No CDN request, npm installation or runtime fetch is required. Implementation follows the [official Swiper API](https://swiperjs.com/swiper-api) for wrapper/slide markup, initialization, slideTo/slideNext/slidePrev, touch events and accessibility. The deck owns one timer across narrative and capture playback to prevent competing autoplay timers. Swiper keyboard handling is disabled; the deck explicitly routes gallery navigation keys to the active Swiper.
+
+Recheck after edits: `.venv/bin/python scripts/check-artifacts.py`. Browser checks are CLI run-code functions in `scripts/check-gallery.js`, `scripts/check-autoplay.js` and `scripts/check-offline.js`, used with Playwright CLI. `scripts/check-blue-fullscreen.js` verifies the preserved narrative layouts and corner controls. Rebuild the PDF, run validation, then run `python3 scripts/package.py`.

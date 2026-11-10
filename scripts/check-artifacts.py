@@ -28,8 +28,12 @@ images = list((ROOT / 'assets').rglob('*.png')) + list((ROOT / 'assets').rglob('
 for path in images:
     with Image.open(path) as im:
         im.verify()
-data = json.loads((ROOT / 'presentation-data.json').read_text())
-assert len(data) == 62
+html_data = json.loads((ROOT / 'presentation-data.json').read_text())
+assert len(html_data) == 21
+data = json.loads((ROOT / 'static-data.json').read_text())
+assert len(data) == 27
+workflows = json.loads((ROOT / 'workflows.json').read_text())
+assert sorted(i['number'] for g in workflows for i in g['items']) == list(range(1,43))
 ns = {'a':'http://schemas.openxmlformats.org/drawingml/2006/main',
       'p':'http://schemas.openxmlformats.org/presentationml/2006/main'}
 with ZipFile(ROOT / 'CC-Student-Management.pptx') as ppt:
@@ -53,11 +57,11 @@ with ZipFile(ROOT / 'CC-Student-Management.pptx') as ppt:
         assert item['title'].replace('\n', '') in text, item['title']
         assert f'ppt/notesSlides/notesSlide{i}.xml' in ppt.namelist()
 info = subprocess.check_output(['pdfinfo', str(ROOT / 'CC-Student-Management.pdf')], text=True)
-assert re.search(r'Pages:\s+62\b', info)
+assert re.search(r'Pages:\s+27\b', info)
 pdf_text = subprocess.check_output(['pdftotext', '-layout', str(ROOT / 'CC-Student-Management.pdf'), '-'], text=True)
 normalize = lambda value: re.sub(r'\s+', '', value)
 for item in data:
     assert normalize(item['title']) in normalize(pdf_text), item['title']
-print(json.dumps({'slides':62, 'pptx_background':'#182a2c on all 62 slides',
-                  'pdf_pages':62, 'matching_titles':62, 'gallery_originals_embedded':42, 'supporting_screenshot':'included as crop in PowerPoint and original in assets',
+print(json.dumps({'html_slides':21, 'static_slides':27, 'pptx_background':'#182a2c on all 27 slides',
+                  'pdf_pages':27, 'matching_titles':27, 'gallery_originals_embedded':42, 'supporting_screenshot':'included as crop in PowerPoint and original in assets',
                   'valid_images':len(images), 'html_references':'all local references resolve'}, indent=2))

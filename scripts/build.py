@@ -64,9 +64,16 @@ for s in slides:
     detail=CROPS/(Path(name).stem+'.jpg')
     im.crop((0,0,im.width,crop_h)).save(detail,quality=94)
     s['detail']=str(detail.relative_to(ROOT))
-for r in rows:
-    slides.append({'type':'gallery','chapter':'APPENDIX / PAGE GALLERY','title':r['title'],'subtitle':r['role'], 'image':'assets/screenshots/'+r['file'],'route':r['route'],'note':f"Captured page: {r['title']}. Role: {r['role']}. Full screenshot included in assets/screenshots. Fictional local fixture data."})
+workflows=json.loads((ROOT/'workflows.json').read_text())
+by_number={int(r['file'].split('-')[0]):r for r in rows}
+for group in workflows:
+    for item in group['items']:
+        item.update(by_number[item['number']])
+        item['image']='assets/screenshots/'+item['file']
+static_slides=slides+[{'type':'contact','chapter':'WORKFLOW ATLAS / %02d'%(i+1),'title':g['title'],'subtitle':g['summary'],'items':g['items'],'note':'Static overview of the interactive HTML gallery. Original images are in assets/screenshots. '+g['summary']} for i,g in enumerate(workflows)]
+slides=slides+[{'type':'atlas','chapter':'EXPLORE / 42 REAL SCREENS','title':'One system. Seven journeys.','subtitle':'Follow a workflow. Swipe through the evidence.','note':'Interactive Swiper gallery; static exports use seven workflow contact sheets.'}]
 (ROOT/'assets/gallery-index.md').write_text(index)
+(ROOT/'static-data.json').write_text(json.dumps(static_slides,ensure_ascii=False,indent=2))
 (ROOT/'presentation-data.json').write_text(json.dumps(slides,ensure_ascii=False,indent=2))
 E=lambda s:html.escape(str(s))
 
@@ -87,14 +94,19 @@ def slide_html(s,i):
     elif typ=='architecture':
         h+='<div class="architecture-grid">'+''.join(f'<article><span class="path">{E(c[0])}</span><h3>{E(c[1])}</h3><p>{E(c[2])}</p></article>' for c in s['cards'])+'</div><div class="data-flow">Browser <span>→</span> Authenticated API <span>→</span> Validated command <span>→</span> Database transaction</div>'
     elif typ=='end': h+=f'<p class="end-body">{E(s["body"])}</p><div class="end-mark">CC<span>STUDENT MANAGEMENT<br>PROJECT PRESENTATION</span></div>'
-    elif typ=='gallery':
-        h+=f'<a class="gallery-frame" href="{E(s["image"])}" target="_blank"><img src="{E(s["image"])}" alt="{E(s["title"])} full page screenshot"></a><p class="gallery-caption">{E(s.get("route",""))} <span>Open image for full resolution • Fictional demonstration data</span></p>'
+    elif typ=='atlas':
+        nav=''.join(f'<button type="button" data-workflow="{j}"><span>{j+1:02d}</span>{E(g["title"])}</button>' for j,g in enumerate(workflows))
+        frames=''
+        for j,g in enumerate(workflows):
+            for k,item in enumerate(g['items']):
+                frames+=f'<article class="swiper-slide" data-group="{j}" data-local="{k+1}" data-total="{len(g["items"])}"><div class="atlas-image"><a href="{E(item["image"])}" target="_blank" rel="noopener" aria-label="Open full resolution: {E(item["title"])}"><img src="{E(item["image"])}" alt="{E(item["title"])}"></a></div><div class="atlas-story"><span class="atlas-role">{E(item["role"])}</span><h2>{E(item["title"])}</h2><p>{E(item["caption"])}</p><a href="{E(item["image"])}" target="_blank" rel="noopener">Open original ↗</a></div></article>'
+        h+=f'<div class="atlas-layout"><nav class="workflow-nav" aria-label="Gallery workflows">{nav}</nav><div class="atlas-stage"><p id="workflow-summary"></p><div class="swiper" id="workflow-swiper" tabindex="0" role="region" aria-label="Screenshot gallery. Left and right arrows browse screenshots."><div class="swiper-wrapper">{frames}</div></div><div class="atlas-toolbar"><button id="gallery-prev" aria-label="Previous screenshot">←</button><output id="gallery-count" aria-live="polite"></output><button id="gallery-next" aria-label="Next screenshot">→</button><span>Swipe or use ← → · P to play / pause</span></div></div></div>'
     if s.get('takeaway'): h+=f'<div class="takeaway">{E(s["takeaway"])}</div>'
     h+=f'<div class="slide-footer"><span>CC / STUDENT MANAGEMENT DASHBOARD</span><span>{i+1:02d} / {len(slides):02d}</span></div></section>'
     return h
 body='\n'.join(slide_html(s,i) for i,s in enumerate(slides))
 toc=''.join(f'<option value="{i}">{i+1:02d} · {E(s["title"].replace(chr(10)," "))}</option>' for i,s in enumerate(slides))
-page=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CC · Student Management Dashboard</title><link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css"></head><body><a class="skip-link" href="#deck">Skip to slides</a><main id="deck">{body}</main><div class="control-dock"><button id="controls-toggle" class="corner-toggle" aria-label="Presentation controls. Press question mark for shortcuts." aria-controls="presentation-menu" aria-expanded="false" title="Presentation controls (?)"><span aria-hidden="true">•••</span></button><nav id="presentation-menu" class="controls" aria-label="Presentation controls" hidden><div class="menu-heading"><strong>Presentation controls</strong><button id="controls-close" aria-label="Close controls">×</button></div><select id="jump" aria-label="Choose slide">{toc}</select><button id="prev" aria-label="Previous slide">← Previous</button><button id="next" aria-label="Next slide">Next →</button><button id="playback" aria-pressed="false" title="Play or pause slideshow (P)">Play slideshow</button><label class="interval-label" for="interval">Seconds per slide<input id="interval" type="number" min="3" max="120" step="1" value="12"></label><p id="playback-status" class="playback-status" role="status" aria-live="polite">Slideshow paused</p><button id="overview" title="Show all slides (O)">Overview</button><button id="fullscreen" title="Full screen (F)">Full screen</button><button id="print" title="Print or save as PDF">Print</button><a href="CC-Student-Management.pptx" download>PowerPoint ↗</a><p class="shortcut-help"><kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> to move · <kbd>P</kbd> play / pause · <kbd>F</kbd> full screen · <kbd>O</kbd> overview · <kbd>?</kbd> controls · <kbd>Esc</kbd> close</p></nav></div><script src="presentation.js"></script></body></html>'''
+page=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CC · Student Management Dashboard</title><link rel="icon" href="data:,"><link rel="stylesheet" href="assets/vendor/swiper-11.2.10/swiper-bundle.min.css"><link rel="stylesheet" href="styles.css"></head><body><a class="skip-link" href="#deck">Skip to slides</a><main id="deck">{body}</main><div class="control-dock"><button id="controls-toggle" class="corner-toggle" aria-label="Presentation controls. Press question mark for shortcuts." aria-controls="presentation-menu" aria-expanded="false" title="Presentation controls (?)"><span aria-hidden="true">•••</span></button><nav id="presentation-menu" class="controls" aria-label="Presentation controls" hidden><div class="menu-heading"><strong>Presentation controls</strong><button id="controls-close" aria-label="Close controls">×</button></div><select id="jump" aria-label="Choose slide">{toc}</select><button id="prev" aria-label="Previous slide">← Previous</button><button id="next" aria-label="Next slide">Next →</button><button id="playback" aria-pressed="false" title="Play or pause slideshow (P)">Play slideshow</button><label class="interval-label" for="interval">Seconds per slide<input id="interval" type="number" min="3" max="120" step="1" value="12"></label><p id="playback-status" class="playback-status" role="status" aria-live="polite">Slideshow paused</p><button id="overview" title="Show all slides (O)">Overview</button><button id="fullscreen" title="Full screen (F)">Full screen</button><button id="print" title="Print or save as PDF">Print</button><a href="CC-Student-Management.pptx" download>PowerPoint ↗</a><p class="shortcut-help"><kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> to move · <kbd>P</kbd> play / pause · <kbd>F</kbd> full screen · <kbd>O</kbd> overview · <kbd>?</kbd> controls · <kbd>Esc</kbd> close</p></nav></div><script src="assets/vendor/swiper-11.2.10/swiper-bundle.min.js"></script><script src="presentation.js"></script></body></html>'''
 (ROOT/'index.html').write_text(page)
 gallery=''.join(f'<a href="assets/screenshots/{E(r["file"])}" target="_blank"><img loading="lazy" src="assets/screenshots/{E(r["file"])}" alt="{E(r["title"])}"><h2>{E(r["title"])}</h2><p>{E(r["role"])}</p></a>' for r in rows)
 (ROOT/'gallery.html').write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CC · Page gallery</title><link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css"></head><body class="gallery-page"><header><p class="eyebrow">CC / SCREENSHOT GALLERY</p><h1>Every captured page.</h1><p>{len(rows)} page and role views · Fictional demonstration data · <a href="index.html">Open presentation →</a></p></header><main class="gallery-grid">{gallery}</main></body></html>')
@@ -121,7 +133,7 @@ def picture(sl,file,x,y,w,h,contain=True):
     iw,ih=Image.open(file).size;scale=min(w/iw,h/ih);dw=iw*scale;dh=ih*scale
     return sl.shapes.add_picture(str(file), Inches(x+(w-dw)/2), Inches(y+(h-dh)/2), width=Inches(dw),height=Inches(dh))
 
-for i,s in enumerate(slides):
+for i,s in enumerate(static_slides):
     sl=prs.slides.add_slide(prs.slide_layouts[6]);sl.background.fill.solid();sl.background.fill.fore_color.rgb=RGBColor.from_string(BG)
     typ=s['type']; is_cover=typ=='cover'; is_end=typ=='end'
     if is_cover or is_end:
@@ -153,17 +165,23 @@ for i,s in enumerate(slides):
         text(sl,'Browser  →  Authenticated API  →  Validated command  →  Database transaction',.65,5.94,12,.4,16,GREEN,True)
     elif typ=='end':
         text(sl,s['body'],.65,3.65,9.3,1.25,26,WHITE);text(sl,'CC',.65,5.3,2,1.1,52,LIME,True);text(sl,'STUDENT MANAGEMENT\nPROJECT PRESENTATION',2.6,5.49,7,.8,16,WHITE)
-    elif typ=='gallery':
-        rect(sl,.6,2.28,12.13,4.56,SCREEN,line=LINE,radius=True);picture(sl,ROOT/s['image'],.68,2.36,11.97,4.40)
-        text(sl,'FULL PAGE CAPTURE · FICTIONAL DATA · ORIGINAL IMAGE INCLUDED IN PROJECT ASSETS',.65,6.87,12,.2,8,MUTED)
+    elif typ=='contact':
+        count=len(s['items']); cols=4 if count>6 else 3; rows_count=(count+cols-1)//cols
+        w=12.13/cols; cell_h=4.65/rows_count
+        for j,item in enumerate(s['items']):
+            x=.6+(j%cols)*w; y=2.25+(j//cols)*cell_h
+            rect(sl,x+.03,y,w-.12,cell_h-.1,CARD,radius=True)
+            picture(sl,ROOT/item['image'],x+.1,y+.08,w-.26,cell_h-1.02)
+            text(sl,f"{item['number']:02d} · {item['title']}",x+.13,y+cell_h-.87,w-.32,.34,10,WHITE,True)
+            text(sl,item['caption'],x+.13,y+cell_h-.51,w-.32,.38,8,MUTED)
     if s.get('takeaway'):
         text(sl,s['takeaway'],.65,6.45,12,.55,15,LIME if is_end else GREEN,True)
     rect(sl,.6,7.12,12.13,.012,LINE if not (is_cover or is_end) else GREEN)
     text(sl,'CC / STUDENT MANAGEMENT DASHBOARD',.6,7.23,10,.2,8,MUTED if not (is_cover or is_end) else LIME)
-    text(sl,f'{i+1:02d} / {len(slides):02d}',11.98,7.22,.8,.2,9,MUTED if not (is_cover or is_end) else LIME)
+    text(sl,f'{i+1:02d} / {len(static_slides):02d}',11.98,7.22,.8,.2,9,MUTED if not (is_cover or is_end) else LIME)
     sl.notes_slide.notes_text_frame.text=s.get('note','')
 prs.core_properties.title='CC — Student Management Dashboard';prs.core_properties.subject='A walkthrough of students, club owners and teachers';prs.core_properties.author='CC project';prs.core_properties.keywords='Student management, clubs, activities, attendance, journals'
 prs.save(ROOT/'CC-Student-Management.pptx')
-report={'core_slides':20,'appendix_slides':len(rows),'total_slides':len(slides),'gallery_screenshots':len(rows),'unique_embedded_screenshots':len({s['image'] for s in slides if 'image' in s}),'source_gallery':'assets/gallery-index.md' if not args.gallery else str(GALLERY),'date':'2026-11-10'}
+report={'core_slides':20,'html_slides':len(slides),'static_slides':len(static_slides),'gallery_workflows':len(workflows),'gallery_screenshots':len(rows),'date':'2026-11-10'}
 (ROOT/'verification/build-summary.json').write_text(json.dumps(report,indent=2))
 print(json.dumps(report,indent=2))

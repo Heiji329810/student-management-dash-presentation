@@ -1,0 +1,795 @@
+[
+  {
+    "type": "cover",
+    "chapter": "CC / PROJECT PRESENTATION",
+    "title": "Student life.\nOrganized.",
+    "subtitle": "Student Management Dashboard",
+    "body": "A shared place for clubs, activities and participation.",
+    "image": "assets/screenshots/03-student-dashboard.png",
+    "note": "Introduce this as a club and extracurricular management project. It serves students, student club owners and teachers. The screenshots use fictional demonstration data.",
+    "detail": "assets/details/03-student-dashboard.jpg"
+  },
+  {
+    "type": "cards",
+    "chapter": "01 / THE PROBLEM",
+    "title": "One connected school experience",
+    "subtitle": "Bring the steps around an activity into one place.",
+    "cards": [
+      [
+        "Discover",
+        "Students need a clear way to find clubs and upcoming activities."
+      ],
+      [
+        "Coordinate",
+        "Club owners need registrations, member lists and attendance together."
+      ],
+      [
+        "Keep a record",
+        "Teachers need visibility into applications, participation and council teams."
+      ]
+    ],
+    "takeaway": "The project connects discovery, organization and reflection.",
+    "note": "Frame these as needs the project addresses, not a measured claim about a specific school's current processes."
+  },
+  {
+    "type": "cards",
+    "chapter": "02 / WHO USES IT",
+    "title": "Three perspectives. Clear responsibilities.",
+    "subtitle": "Club ownership is a responsibility within the student role.",
+    "cards": [
+      [
+        "Student",
+        "Browse and join clubs. Register for activities. Read journals and share feedback."
+      ],
+      [
+        "Student club owner",
+        "Manage owned clubs, plan activities, record attendance and publish journals."
+      ],
+      [
+        "Teacher",
+        "Review club applications, organize official events and manage student council years."
+      ]
+    ],
+    "takeaway": "The original internal teacher role is named “founder”; student club founders stay students.",
+    "note": "There are two account roles: student and founder. The founder role means teacher. Club owner authorization depends on the student's ownership of a specific club."
+  },
+  {
+    "type": "workflow",
+    "chapter": "03 / THE EXPERIENCE",
+    "title": "From an idea to a shared memory",
+    "subtitle": "A complete journey around a school club.",
+    "steps": [
+      [
+        "01",
+        "Apply",
+        "Propose a club"
+      ],
+      [
+        "02",
+        "Approve",
+        "Teacher reviews"
+      ],
+      [
+        "03",
+        "Organize",
+        "Plan an activity"
+      ],
+      [
+        "04",
+        "Participate",
+        "Register and attend"
+      ],
+      [
+        "05",
+        "Reflect",
+        "Journal and feedback"
+      ]
+    ],
+    "takeaway": "Notifications connect the people involved at each stage.",
+    "note": "Club applications are reviewed directly by teachers. Election services exist in the backend but are not part of this rendered workflow."
+  },
+  {
+    "type": "screen",
+    "chapter": "04 / STUDENT EXPERIENCE",
+    "title": "A useful starting point",
+    "subtitle": "See clubs, registrations and community activity at a glance.",
+    "image": "assets/screenshots/03-student-dashboard.png",
+    "points": [
+      "Dashboard summaries come from stored application data.",
+      "Club and activity links lead into the next action.",
+      "Language and theme controls support the existing interface."
+    ],
+    "tag": "Student / Home",
+    "note": "The student dashboard includes club information, participation summaries and rankings. Teachers see their own management board at the same home route.",
+    "detail": "assets/details/03-student-dashboard.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "04 / STUDENT EXPERIENCE",
+    "title": "Find a club. Find your people.",
+    "subtitle": "Browse categories and open a club to explore its activities.",
+    "image": "assets/screenshots/04-student-clubs.png",
+    "points": [
+      "Explore clubs and organizations by category.",
+      "Join or leave ordinary clubs from the interface.",
+      "Official organization membership is managed by teachers."
+    ],
+    "tag": "Student / Clubs & Organizations",
+    "note": "Joining a club and registering for a specific activity are distinct operations. Founders must remain members of their own clubs.",
+    "detail": "assets/details/04-student-clubs.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "04 / STUDENT EXPERIENCE",
+    "title": "Make participation straightforward",
+    "subtitle": "View an activity, register, then find it in My Registrations.",
+    "image": "assets/screenshots/05-student-club-detail.png",
+    "points": [
+      "View upcoming and past activities for a club.",
+      "Registration checks available capacity and whether the activity is open.",
+      "My Registrations brings a student's bookings together."
+    ],
+    "tag": "Student / Club detail",
+    "note": "Registration is stored on the server. The UI supports unregistering through the club page and My Registrations. The backend enforces student identity, capacity and activity status.",
+    "detail": "assets/details/05-student-club-detail.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "05 / CLUB APPLICATIONS",
+    "title": "Turn a club idea into a proposal",
+    "subtitle": "A structured application connects students with teacher review.",
+    "image": "assets/screenshots/02-student-application-result.png",
+    "points": [
+      "Provide club details, category and founder names.",
+      "Official-club requests also identify a managing teacher.",
+      "Track the decision and read the teacher's feedback."
+    ],
+    "tag": "Student / Create Club & My Applications",
+    "note": "The pictured example shows a rejected application and feedback. Approval establishes the club directly; rejection requires a teacher comment.",
+    "detail": "assets/details/02-student-application-result.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "06 / CLUB OWNER EXPERIENCE",
+    "title": "One place to run a club",
+    "subtitle": "Owned-club tools separate member work from activity planning.",
+    "image": "assets/screenshots/13-owner-activity-options.png",
+    "points": [
+      "Open member rosters and weekly check-in.",
+      "Add and edit activities for an owned club.",
+      "Cancel upcoming activities with a participant message."
+    ],
+    "tag": "Student club owner / Activity management",
+    "note": "Club management is restricted to the owning student. An owner of one club cannot manage another club. Cancellation hides the activity from current views while retaining metadata on the server.",
+    "detail": "assets/details/13-owner-activity-options.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "06 / CLUB OWNER EXPERIENCE",
+    "title": "Record attendance by week",
+    "subtitle": "A calendar view turns participation into a usable record.",
+    "image": "assets/screenshots/11-owner-attendance.png",
+    "points": [
+      "Choose a week and mark present, absent or leave.",
+      "Records belong to a club, student and week.",
+      "Three present sessions help determine rating eligibility."
+    ],
+    "tag": "Student club owner / Weekly check-in",
+    "note": "The current product permits owner-entered attendance, including the owner's own attendance. There is no teacher-approval workflow. Week keys follow local calendar Mondays.",
+    "detail": "assets/details/11-owner-attendance.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "07 / JOURNALS & COMMUNITY",
+    "title": "Give each activity a story",
+    "subtitle": "Publish reflections, participants, photos and a social link.",
+    "image": "assets/screenshots/07-student-published-journal.png",
+    "points": [
+      "Club owners create and edit the activity journal.",
+      "Authenticated users can view published journals.",
+      "Likes, rated comments and replies keep the conversation going."
+    ],
+    "tag": "Community / Published activity journal",
+    "note": "Journal editing supports up to eight supported images and selecting registered participants. Published photos are served through authenticated API routes. Authors can delete their own comment trees.",
+    "detail": "assets/details/07-student-published-journal.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "07 / JOURNALS & COMMUNITY",
+    "title": "Feedback grounded in participation",
+    "subtitle": "Club ratings combine attendance eligibility with community feedback.",
+    "image": "assets/screenshots/35-member-rating-edit.png",
+    "fallback": "visible-member-rating.png",
+    "points": [
+      "Students must be members with three present sessions to rate.",
+      "Ratings cover four dimensions plus an overall score.",
+      "Students can update their rating; teachers can review summaries."
+    ],
+    "tag": "Student / Rate My Club",
+    "note": "Ratings are stored per student and club and can be updated. Named community feedback is visible within the authenticated application. Three present sessions and current membership are required before rating.",
+    "detail": "assets/details/35-member-rating-edit.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "08 / TEACHER EXPERIENCE",
+    "title": "Support clubs with clear decisions",
+    "subtitle": "The teacher home page brings applications and school activity together.",
+    "image": "assets/screenshots/21-teacher-dashboard.png",
+    "fallback": "visible-teacher-application-rejected.png",
+    "points": [
+      "Review pending club applications.",
+      "Approve a club or reject it with a reason.",
+      "Applicants receive the result and feedback."
+    ],
+    "tag": "Teacher / Management board",
+    "note": "The teacher role is internally named founder. This is a separate rendering of the home route, not a third account role. Decisions are stored and the applicant receives a notification.",
+    "detail": "assets/details/21-teacher-dashboard.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "08 / TEACHER EXPERIENCE",
+    "title": "Coordinate official school activity",
+    "subtitle": "Teachers publish official events and review participation.",
+    "image": "assets/screenshots/26-teacher-official-events.png",
+    "fallback": "visible-teacher-registered-roster.png",
+    "points": [
+      "Create official events using the activity form.",
+      "View students registered for each event.",
+      "Review club attendance and rating summaries."
+    ],
+    "tag": "Teacher / Official events & participation",
+    "note": "Teachers can also manage membership in the School Official Events category. The roster includes the details needed for teacher management.",
+    "detail": "assets/details/26-teacher-official-events.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "08 / TEACHER EXPERIENCE",
+    "title": "Keep council years connected",
+    "subtitle": "Create a new team while preserving earlier council terms.",
+    "image": "assets/screenshots/27-teacher-council.png",
+    "fallback": "visible-council-rollover.png",
+    "points": [
+      "Set the school year and departments.",
+      "Search and select students for the new crew.",
+      "Archive the previous term and inspect its details later."
+    ],
+    "tag": "Teacher / Student Council",
+    "note": "Starting a council term replaces current council membership with the new departments' union and archives the previous term. The original UI has no standalone department assign/remove screen.",
+    "detail": "assets/details/27-teacher-council.jpg"
+  },
+  {
+    "type": "screen",
+    "chapter": "09 / KEEP PEOPLE INFORMED",
+    "title": "Close the loop with notifications",
+    "subtitle": "Updates appear where people can act on them.",
+    "image": "assets/screenshots/visible-member-cancellation-notice.png",
+    "points": [
+      "Application decisions return to the applicant.",
+      "Registrations and journal interactions inform the relevant people.",
+      "Cancellation notices preserve the message for participants."
+    ],
+    "tag": "Student / Cancellation notification",
+    "note": "This screenshot is from a captured workflow state, rather than a separate route. Read status and notification lists are scoped to the signed-in recipient.",
+    "detail": "assets/details/visible-member-cancellation-notice.jpg"
+  },
+  {
+    "type": "architecture",
+    "chapter": "10 / HOW IT WORKS",
+    "title": "A shared UI. A persistent backend.",
+    "subtitle": "A TypeScript monorepo connects the screens to stored data.",
+    "cards": [
+      [
+        "apps/web",
+        "React + Vite",
+        "Routes, forms and role-aware views"
+      ],
+      [
+        "shared",
+        "Zod + TypeScript",
+        "Request / response contracts and helpers"
+      ],
+      [
+        "apps/server",
+        "Express 5 + Better Auth",
+        "Sessions, validation and authorization"
+      ],
+      [
+        "PostgreSQL",
+        "Drizzle ORM + migrations",
+        "Users, clubs, activities, records and photos"
+      ]
+    ],
+    "takeaway": "The server checks identity and permissions before saving a command in a transaction.",
+    "note": "The frontend reads /api/state and sends /api/commands; Better Auth handles /api/auth/*. Writes use a transaction with a project-specific advisory lock. Core relationships use relational tables; complex records use separate typed JSONB tables."
+  },
+  {
+    "type": "cards",
+    "chapter": "11 / IMPLEMENTATION CHOICES",
+    "title": "Make the records dependable",
+    "subtitle": "Checks live alongside the data and workflows.",
+    "cards": [
+      [
+        "Identity",
+        "Better Auth sessions identify the user. Teacher and owner permissions are checked by the server."
+      ],
+      [
+        "Validation",
+        "Shared Zod contracts check command inputs and responses. Capacity, attendance and journal rules are enforced."
+      ],
+      [
+        "Persistence",
+        "PostgreSQL stores business data and journal photos. Transactions keep connected writes together."
+      ]
+    ],
+    "takeaway": "Students receive scoped data; roster contact access depends on role and ownership.",
+    "note": "Do not describe this as a production security certification. The aggregate state loading and serialized writes fit the current small application; larger deployments would need additional scalability work."
+  },
+  {
+    "type": "scope",
+    "chapter": "12 / WHAT IS IN SCOPE",
+    "title": "Show the product as it exists",
+    "subtitle": "Visible workflows and backend-only services are distinct.",
+    "cards": [
+      [
+        "Visible in this presentation",
+        "Clubs, applications, activities, registrations, attendance, journals, feedback, official events, council years and notifications."
+      ],
+      [
+        "Backend-only today",
+        "Club and event election services exist, but election links redirect to Clubs. There is no rendered election or scoring screen."
+      ]
+    ],
+    "takeaway": "Screenshot evidence demonstrates captured interface states. Test results are reported separately in the project handoff.",
+    "note": "The existing docs/action-inventory.json lists 31 commands. Some are dormant. Do not equate action count with reachable pages or describe all tests as passed while final verification is running."
+  },
+  {
+    "type": "end",
+    "chapter": "CC / PROJECT TAKEAWAY",
+    "title": "Discover. Participate.\nOrganize. Reflect.",
+    "subtitle": "One connected workflow for extracurricular life.",
+    "body": "Students take part. Club owners coordinate. Teachers support and oversee.",
+    "takeaway": "Explore the page gallery next, or open the dashboard for a live walkthrough.",
+    "note": "The appendix contains the captured route and role views. All screenshots use fictional demonstration data. The presentation itself is a standalone local artifact."
+  },
+  {
+    "type": "contact",
+    "chapter": "WORKFLOW ATLAS / 01",
+    "title": "Discover your community",
+    "subtitle": "Sign in, find a club, and inspect its people.",
+    "items": [
+      {
+        "number": 1,
+        "caption": "Sign in with empty credentials; no account details are exposed.",
+        "file": "01-login-english.png",
+        "title": "Sign in, empty credentials",
+        "role": "Anonymous",
+        "route": "",
+        "image": "assets/screenshots/01-login-english.png"
+      },
+      {
+        "number": 3,
+        "caption": "The owner’s dashboard collects clubs, activities and quick actions.",
+        "file": "03-student-dashboard.png",
+        "title": "Dashboard",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/03-student-dashboard.png"
+      },
+      {
+        "number": 4,
+        "caption": "Browse clubs and organizations before opening a detail page.",
+        "file": "04-student-clubs.png",
+        "title": "Clubs and organizations",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/04-student-clubs.png"
+      },
+      {
+        "number": 5,
+        "caption": "Inspect a club’s description and its activity list.",
+        "file": "05-student-club-detail.png",
+        "title": "Club detail and activities",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/05-student-club-detail.png"
+      },
+      {
+        "number": 6,
+        "caption": "Open the club’s member directory.",
+        "file": "06-student-club-members.png",
+        "title": "Club member directory",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/06-student-club-members.png"
+      },
+      {
+        "number": 41,
+        "caption": "Use the navigation search dialog to find destinations.",
+        "file": "41-navigation-search.png",
+        "title": "Navigation search dialog",
+        "role": "Student member",
+        "route": "",
+        "image": "assets/screenshots/41-navigation-search.png"
+      }
+    ],
+    "note": "Static overview of the interactive HTML gallery. Original images are in assets/screenshots. Sign in, find a club, and inspect its people."
+  },
+  {
+    "type": "contact",
+    "chapter": "WORKFLOW ATLAS / 02",
+    "title": "Join, participate, reflect",
+    "subtitle": "Applications become participation; journals and ratings close the loop.",
+    "items": [
+      {
+        "number": 2,
+        "caption": "Create a club and revisit application status with teacher feedback.",
+        "file": "02-student-application-result.png",
+        "title": "Create Club / My Applications, teacher feedback",
+        "role": "Student applicant",
+        "route": "",
+        "image": "assets/screenshots/02-student-application-result.png"
+      },
+      {
+        "number": 37,
+        "caption": "The official club application includes teacher-related fields.",
+        "file": "37-student-official-application-form.png",
+        "title": "Official club application teacher fields",
+        "role": "Student applicant",
+        "route": "",
+        "image": "assets/screenshots/37-student-official-application-form.png"
+      },
+      {
+        "number": 34,
+        "caption": "Revisit upcoming and past activity registrations.",
+        "file": "34-member-registrations.png",
+        "title": "Upcoming and past registrations",
+        "role": "Registered student",
+        "route": "",
+        "image": "assets/screenshots/34-member-registrations.png"
+      },
+      {
+        "number": 35,
+        "caption": "An eligible member can edit a rating and inspect the ranking.",
+        "file": "35-member-rating-edit.png",
+        "title": "Eligible rating edit and ranking",
+        "role": "Student member",
+        "route": "",
+        "image": "assets/screenshots/35-member-rating-edit.png"
+      },
+      {
+        "number": 40,
+        "caption": "Rating requires the displayed membership and attendance conditions.",
+        "file": "40-student-rating-eligibility.png",
+        "title": "Rating attendance/membership requirement",
+        "role": "Student member",
+        "route": "",
+        "image": "assets/screenshots/40-student-rating-eligibility.png"
+      },
+      {
+        "number": 36,
+        "caption": "Members read the journal without owner editing controls.",
+        "file": "36-member-journal-view.png",
+        "title": "Journal without owner edit controls",
+        "role": "Student member",
+        "route": "",
+        "image": "assets/screenshots/36-member-journal-view.png"
+      },
+      {
+        "number": 7,
+        "caption": "Read a published activity journal with its photo and discussion.",
+        "file": "07-student-published-journal.png",
+        "title": "Published activity journal",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/07-student-published-journal.png"
+      }
+    ],
+    "note": "Static overview of the interactive HTML gallery. Original images are in assets/screenshots. Applications become participation; journals and ratings close the loop."
+  },
+  {
+    "type": "contact",
+    "chapter": "WORKFLOW ATLAS / 03",
+    "title": "Lead the people",
+    "subtitle": "Ownership opens a focused path to members and attendance.",
+    "items": [
+      {
+        "number": 8,
+        "caption": "Begin management by choosing clubs or activities.",
+        "file": "08-owner-manage.png",
+        "title": "Manage clubs and activities",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/08-owner-manage.png"
+      },
+      {
+        "number": 9,
+        "caption": "Select an owned club to manage.",
+        "file": "09-owner-club-selection.png",
+        "title": "Manage club selection",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/09-owner-club-selection.png"
+      },
+      {
+        "number": 20,
+        "caption": "The selected club exposes member and attendance management choices.",
+        "file": "20-owner-management-selected.png",
+        "title": "Selected club management choices",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/20-owner-management-selected.png"
+      },
+      {
+        "number": 10,
+        "caption": "Inspect the selected club’s member roster.",
+        "file": "10-owner-member-roster.png",
+        "title": "Manage members",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/10-owner-member-roster.png"
+      },
+      {
+        "number": 11,
+        "caption": "Record weekly attendance from the club calendar.",
+        "file": "11-owner-attendance.png",
+        "title": "Weekly attendance",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/11-owner-attendance.png"
+      }
+    ],
+    "note": "Static overview of the interactive HTML gallery. Original images are in assets/screenshots. Ownership opens a focused path to members and attendance."
+  },
+  {
+    "type": "contact",
+    "chapter": "WORKFLOW ATLAS / 04",
+    "title": "Run the activity lifecycle",
+    "subtitle": "Choose a club, plan an activity, and publish its story.",
+    "items": [
+      {
+        "number": 12,
+        "caption": "Select the club whose activities you want to manage.",
+        "file": "12-owner-activity-selection.png",
+        "title": "Manage activity club selection",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/12-owner-activity-selection.png"
+      },
+      {
+        "number": 13,
+        "caption": "Choose creation, editing, cancellation or journaling.",
+        "file": "13-owner-activity-options.png",
+        "title": "Activity management options",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/13-owner-activity-options.png"
+      },
+      {
+        "number": 14,
+        "caption": "Enter a new activity’s details in the creation form.",
+        "file": "14-owner-add-activity.png",
+        "title": "Create activity",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/14-owner-add-activity.png"
+      },
+      {
+        "number": 15,
+        "caption": "Select an activity before requesting an edit.",
+        "file": "15-owner-edit-activity-selection.png",
+        "title": "Edit activity selection",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/15-owner-edit-activity-selection.png"
+      },
+      {
+        "number": 16,
+        "caption": "The past-activity guard blocks editing after an event has ended.",
+        "file": "16-owner-edit-activity-form.png",
+        "title": "Past activity edit guard",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/16-owner-edit-activity-form.png"
+      },
+      {
+        "number": 17,
+        "caption": "The cancellation selector is empty after the recorded cancellation.",
+        "file": "17-owner-cancel-activity.png",
+        "title": "Cancel activity (no remaining future events)",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/17-owner-cancel-activity.png"
+      },
+      {
+        "number": 18,
+        "caption": "Choose an event before opening its journal.",
+        "file": "18-owner-journal-selection.png",
+        "title": "Journal event selection",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/18-owner-journal-selection.png"
+      },
+      {
+        "number": 19,
+        "caption": "Edit the journal narrative and photo reference in the owner form.",
+        "file": "19-owner-journal-edit.png",
+        "title": "Journal edit form",
+        "role": "Student club owner",
+        "route": "",
+        "image": "assets/screenshots/19-owner-journal-edit.png"
+      }
+    ],
+    "note": "Static overview of the interactive HTML gallery. Original images are in assets/screenshots. Choose a club, plan an activity, and publish its story."
+  },
+  {
+    "type": "contact",
+    "chapter": "WORKFLOW ATLAS / 05",
+    "title": "Review with context",
+    "subtitle": "Teachers see organizations, membership and participation together.",
+    "items": [
+      {
+        "number": 21,
+        "caption": "The teacher board brings review and administration tasks together.",
+        "file": "21-teacher-dashboard.png",
+        "title": "Teacher Management Board",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/21-teacher-dashboard.png"
+      },
+      {
+        "number": 22,
+        "caption": "Teachers browse the organization directory from their own role.",
+        "file": "22-teacher-clubs.png",
+        "title": "Teacher organization directory",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/22-teacher-clubs.png"
+      },
+      {
+        "number": 23,
+        "caption": "The teacher detail view shows the club and its activities.",
+        "file": "23-teacher-club-detail.png",
+        "title": "Teacher club detail",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/23-teacher-club-detail.png"
+      },
+      {
+        "number": 24,
+        "caption": "Teachers can inspect the club member directory.",
+        "file": "24-teacher-member-directory.png",
+        "title": "Teacher member directory",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/24-teacher-member-directory.png"
+      },
+      {
+        "number": 25,
+        "caption": "Review attendance and rating summaries for club participation.",
+        "file": "25-teacher-participation.png",
+        "title": "Attendance and rating summary",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/25-teacher-participation.png"
+      },
+      {
+        "number": 30,
+        "caption": "Manage official organization membership from its summary.",
+        "file": "30-teacher-official-members.png",
+        "title": "Official organization membership management",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/30-teacher-official-members.png"
+      }
+    ],
+    "note": "Static overview of the interactive HTML gallery. Original images are in assets/screenshots. Teachers see organizations, membership and participation together."
+  },
+  {
+    "type": "contact",
+    "chapter": "WORKFLOW ATLAS / 06",
+    "title": "Coordinate the institution",
+    "subtitle": "Official events and council years preserve institutional continuity.",
+    "items": [
+      {
+        "number": 26,
+        "caption": "Review official events and their registered students.",
+        "file": "26-teacher-official-events.png",
+        "title": "Official events and registered students",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/26-teacher-official-events.png"
+      },
+      {
+        "number": 31,
+        "caption": "Open the official event organization and its event list.",
+        "file": "31-teacher-official-club.png",
+        "title": "Official event organization",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/31-teacher-official-club.png"
+      },
+      {
+        "number": 33,
+        "caption": "Prepare an official event using the teacher creation form.",
+        "file": "33-teacher-create-official-event.png",
+        "title": "New official event form",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/33-teacher-create-official-event.png"
+      },
+      {
+        "number": 32,
+        "caption": "Inspect the Student Council organization page.",
+        "file": "32-teacher-council-organization.png",
+        "title": "Student Council organization",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/32-teacher-council-organization.png"
+      },
+      {
+        "number": 27,
+        "caption": "Browse the current council and archived council crews.",
+        "file": "27-teacher-council.png",
+        "title": "Council current and archived crews",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/27-teacher-council.png"
+      },
+      {
+        "number": 28,
+        "caption": "Prepare a new council year with its crew assignments.",
+        "file": "28-teacher-new-council.png",
+        "title": "New council year form",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/28-teacher-new-council.png"
+      },
+      {
+        "number": 29,
+        "caption": "Open a past year to inspect its archived council crew.",
+        "file": "29-teacher-council-year.png",
+        "title": "Archived council year detail",
+        "role": "Teacher",
+        "route": "",
+        "image": "assets/screenshots/29-teacher-council-year.png"
+      }
+    ],
+    "note": "Static overview of the interactive HTML gallery. Original images are in assets/screenshots. Official events and council years preserve institutional continuity."
+  },
+  {
+    "type": "contact",
+    "chapter": "WORKFLOW ATLAS / 07",
+    "title": "Stay informed, respect boundaries",
+    "subtitle": "Notifications guide attention; guard screens explain unavailable access.",
+    "items": [
+      {
+        "number": 42,
+        "caption": "Inspect notifications and their read state from the dashboard.",
+        "file": "42-student-notifications.png",
+        "title": "Notification list and read state",
+        "role": "Student member",
+        "route": "",
+        "image": "assets/screenshots/42-student-notifications.png"
+      },
+      {
+        "number": 38,
+        "caption": "A student reaching a teacher-only page sees Access Denied.",
+        "file": "38-student-teacher-access-denied.png",
+        "title": "Role access denied (intentional guard)",
+        "role": "Student",
+        "route": "",
+        "image": "assets/screenshots/38-student-teacher-access-denied.png"
+      },
+      {
+        "number": 39,
+        "caption": "A missing club identifier produces the Club Not Found guard.",
+        "file": "39-club-not-found.png",
+        "title": "Missing club (intentional guard)",
+        "role": "Student",
+        "route": "",
+        "image": "assets/screenshots/39-club-not-found.png"
+      }
+    ],
+    "note": "Static overview of the interactive HTML gallery. Original images are in assets/screenshots. Notifications guide attention; guard screens explain unavailable access."
+  }
+]

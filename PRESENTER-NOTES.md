@@ -81,3 +81,8 @@ The existing docs/action-inventory.json lists 31 commands. Some are dormant. Do 
 ## 20 — Discover. Participate. Organize. Reflect.
 
 The appendix contains the captured route and role views. All screenshots use fictional demonstration data. The presentation itself is a standalone local artifact.
+
+
+## Interactive workflow atlas (2026-11-10)
+
+After the original 20 narrative slides, HTML slide 21 contains seven workflow chapters and all 42 captured page/role views in one Swiper gallery. Select a workflow to explore it, or press P for timed capture playback. Browsing or focusing a capture pauses playback. On this slide Left/Right and Home/End browse captures, while the corner controls navigate deck slides. Static PowerPoint/PDF slides 21–27 are contact sheets for these same seven workflows. Use the bundled originals for legible full-resolution inspection; contact sheets are navigation and discussion overviews. Screenshot 16 is the ended-activity guard; screenshot 17 has no remaining future events to cancel. Neither is evidence of a successful edit or cancellation form submission.

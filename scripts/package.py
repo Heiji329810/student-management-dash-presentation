@@ -5,7 +5,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = ['index.html', 'gallery.html', 'styles.css', 'presentation.js',
-         'presentation-data.json', 'slides.json', 'screenshot-labels.json',
+         'presentation-data.json', 'static-data.json', 'workflows.json', 'slides.json', 'screenshot-labels.json',
          'README.md', 'PRESENTER-NOTES.md', 'SOURCES.md', 'requirements.txt',
          'CC-Student-Management.pptx', 'CC-Student-Management.pdf',
          'verification/release-validation.json']

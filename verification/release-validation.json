@@ -1,6 +1,65 @@
 {
   "date": "2026-11-10",
-  "layout": {
+  "baseline_commit": "6280ed6bad0f8a906941b8aca7693213258d3732",
+  "narrative_preservation": "slides.json and first 20 generated narrative records match baseline exactly",
+  "counts": {
+    "html_slides": 21,
+    "narrative_slides": 20,
+    "gallery_slides": 1,
+    "gallery_captures": 42,
+    "workflows": 7,
+    "pptx_slides": 27,
+    "pdf_pages": 27
+  },
+  "artifacts": {
+    "html_slides": 21,
+    "static_slides": 27,
+    "pptx_background": "#182a2c on all 27 slides",
+    "pdf_pages": 27,
+    "matching_titles": 27,
+    "gallery_originals_embedded": 42,
+    "supporting_screenshot": "included as crop in PowerPoint and original in assets",
+    "valid_images": 55,
+    "html_references": "all local references resolve"
+  },
+  "gallery_browser": {
+    "checks_passed": 268,
+    "viewports": [
+      "1920x1080",
+      "2400x1350",
+      "1280x720",
+      "390x844",
+      "360x640"
+    ],
+    "all_42_per_viewport": true,
+    "all_42_actual_fullscreen": true,
+    "keyboard": "arrows, Home/End scoped to gallery",
+    "touch": "mobile Chromium CDP touchStart/move/end advances capture",
+    "errors": []
+  },
+  "autoplay": {
+    "checks": [
+      "Default paused",
+      "P starts narrative playback",
+      "P pauses",
+      "Narrative enters gallery at first capture",
+      "Timer advances capture, not deck",
+      "Autoplay visits all 42 captures",
+      "After final capture loops to cover",
+      "Keyboard browsing pauses autoplay",
+      "P resumes capture playback",
+      "Workflow click pauses",
+      "Keyboard focus pauses",
+      "Hidden tab suspends timer",
+      "Visible tab resumes with fresh interval",
+      "Overview pauses",
+      "Interval normalization 1",
+      "Interval normalization 999",
+      "Interval normalization bad",
+      "Autoplay leaves corner controls hidden"
+    ]
+  },
+  "narrative_browser": {
     "nativeViewportNull": {
       "width": 1920,
       "height": 1080,
@@ -16,7 +75,7 @@
         "scrollWidth": 1920,
         "background": "rgb(24, 42, 44)",
         "fullscreen": false,
-        "slides": 62
+        "slides": 20
       },
       {
         "label": "1920x1080-fullscreen",
@@ -25,7 +84,7 @@
         "scrollWidth": 1920,
         "background": "rgb(24, 42, 44)",
         "fullscreen": true,
-        "slides": 62
+        "slides": 20
       },
       {
         "label": "2400x1350-window",
@@ -34,7 +93,7 @@
         "scrollWidth": 2400,
         "background": "rgb(24, 42, 44)",
         "fullscreen": false,
-        "slides": 62
+        "slides": 20
       },
       {
         "label": "2400x1350-fullscreen",
@@ -43,72 +102,39 @@
         "scrollWidth": 2400,
         "background": "rgb(24, 42, 44)",
         "fullscreen": true,
-        "slides": 62
+        "slides": 20
       }
     ],
     "keyboardFocus": "",
     "navigation": "Arrows / Space / F / O / ? / Escape passed",
     "disclosure": "hover / keyboard focus / touch / aria / menu bounds passed",
-    "mobile": "390x844 / eight representative slides",
+    "mobile": "390x844 / seven representative slides",
     "problems": []
   },
-  "autoplay": {
-    "checks": [
-      "Default starts paused",
-      "Default interval waits 12 seconds",
-      "Default interval advances",
-      "P pauses",
-      "Play button keyboard activation",
-      "Configured interval advances",
-      "Manual navigation resets countdown",
-      "Manual selection gets full interval",
-      "Final slide loops to first",
-      "Overview pauses",
-      "Play leaves overview",
-      "Hidden tab suspends playback",
-      "Visible tab resumes with fresh interval",
-      "Printing pauses",
-      "URL interval 1 normalizes to 3",
-      "URL interval 999 normalizes to 120",
-      "URL interval nonsense normalizes to 12",
-      "URL interval 0 normalizes to 3",
-      "URL interval -5 normalizes to 3",
-      "URL autoplay loops",
-      "Autoplay keeps controls hidden",
-      "P in input does not trigger playback",
-      "Fullscreen preserves playback"
-    ],
-    "passed": 23
+  "swiper": {
+    "version": "11.2.10",
+    "license": "MIT",
+    "vendored": true,
+    "official_docs": "https://swiperjs.com/swiper-api"
   },
-  "artifacts": {
-    "slides": 62,
-    "pptx_background": "#182a2c on all 62 slides",
-    "pdf_pages": 62,
-    "matching_titles": 62,
-    "gallery_originals_embedded": 42,
-    "supporting_screenshot": "included as crop in PowerPoint and original in assets",
-    "valid_images": 55,
-    "html_references": "all local references resolve"
+  "format_differences": "HTML: one interactive 42-capture gallery. PPTX/PDF: seven workflow contact sheets, all 42 originals embedded. HTML Print opens the supplied static PDF.",
+  "offline_fresh_checkout": {
+    "checkout": "fresh staged checkout, no environment or browser cache copied",
+    "offline": true,
+    "protocol": "file:",
+    "slides": 21,
+    "captures": 42,
+    "swiper": true,
+    "images": true,
+    "title": "21 / 21 \u00b7 CC Student Management",
+    "external_requests": [],
+    "errors": [],
+    "keyboard": "passed",
+    "standalone_gallery": "all 42 images loaded"
   },
-  "pdf_rendered_background": "#182a2c at the corner of all 62 rendered pages",
-  "file_url": "Chromium direct file launch and 3-second autoplay passed without a server",
-  "method": "Headless system Chromium; Playwright clock for timer boundaries; visibilitychange simulated for hidden-tab suspension; LibreOffice PDF export; XML, image hashes and pdftotext checks",
-  "sha256": {
-    "index.html": "933e9c00811dbf1e8b78df1bfbe54c7818ebf64893ac58796c42be16b68deda9",
-    "gallery.html": "f5044d707c46ef73c7e2656b741f6e3b5df6581f8880a27458d2586c0f4551a1",
-    "presentation.js": "1881330de840eedf71542d34965698023f9904a6a86c7d05896c05ec2a319c0e",
-    "styles.css": "75e8ab8afdc0520a5bc7ad251993778d6dc8a4c180a66c427497aac693dd08ea",
-    "presentation-data.json": "bee2309cf26cfa219b6552c204d778143a0fac85c8a94891f7addcaab9797f8e",
-    "CC-Student-Management.pptx": "c5432c98c3838bbe3d6b59e39844a958561daba4c14bf28bd05e74bb3569fb7a",
-    "CC-Student-Management.pdf": "99dbece648e490680dd8bd9b4aa5f8e694b77dc507666b2025cc75facabaa68b"
-  },
-  "fresh_checkout": {
-    "rebuild": "HTML, gallery and slide data are byte-identical; every PPTX ZIP member is byte-identical",
-    "assets": "Artifact validator passed from exported staged checkout without original screenshot directories"
-  },
-  "privacy": {
-    "scan": "Staged files plus recursive ZIP/PPTX members; exact temporary token and common credential patterns; prohibited private/runtime paths; image EXIF/text metadata",
-    "result": "No credential matches, private runtime files or image EXIF/text metadata found",
-    "size_limit": "Every staged file is below 100 MiB"
+  "privacy_audit": {
+    "tracked_files_and_zip": "no private work files, environments, browser sessions or credentials",
+    "credential_patterns": "no GitHub token, private key, credential URL or PostgreSQL credential URL found",
+    "auth": "temporary askpass outside repository; credential helper disabled per git command"
   }
 }

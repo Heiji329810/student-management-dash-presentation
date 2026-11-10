@@ -1,0 +1,212 @@
+[
+  {
+    "title": "Discover your community",
+    "summary": "Sign in, find a club, and inspect its people.",
+    "items": [
+      {
+        "number": 1,
+        "caption": "Sign in with empty credentials; no account details are exposed."
+      },
+      {
+        "number": 3,
+        "caption": "The owner\u2019s dashboard collects clubs, activities and quick actions."
+      },
+      {
+        "number": 4,
+        "caption": "Browse clubs and organizations before opening a detail page."
+      },
+      {
+        "number": 5,
+        "caption": "Inspect a club\u2019s description and its activity list."
+      },
+      {
+        "number": 6,
+        "caption": "Open the club\u2019s member directory."
+      },
+      {
+        "number": 41,
+        "caption": "Use the navigation search dialog to find destinations."
+      }
+    ]
+  },
+  {
+    "title": "Join, participate, reflect",
+    "summary": "Applications become participation; journals and ratings close the loop.",
+    "items": [
+      {
+        "number": 2,
+        "caption": "Create a club and revisit application status with teacher feedback."
+      },
+      {
+        "number": 37,
+        "caption": "The official club application includes teacher-related fields."
+      },
+      {
+        "number": 34,
+        "caption": "Revisit upcoming and past activity registrations."
+      },
+      {
+        "number": 35,
+        "caption": "An eligible member can edit a rating and inspect the ranking."
+      },
+      {
+        "number": 40,
+        "caption": "Rating requires the displayed membership and attendance conditions."
+      },
+      {
+        "number": 36,
+        "caption": "Members read the journal without owner editing controls."
+      },
+      {
+        "number": 7,
+        "caption": "Read a published activity journal with its photo and discussion."
+      }
+    ]
+  },
+  {
+    "title": "Lead the people",
+    "summary": "Ownership opens a focused path to members and attendance.",
+    "items": [
+      {
+        "number": 8,
+        "caption": "Begin management by choosing clubs or activities."
+      },
+      {
+        "number": 9,
+        "caption": "Select an owned club to manage."
+      },
+      {
+        "number": 20,
+        "caption": "The selected club exposes member and attendance management choices."
+      },
+      {
+        "number": 10,
+        "caption": "Inspect the selected club\u2019s member roster."
+      },
+      {
+        "number": 11,
+        "caption": "Record weekly attendance from the club calendar."
+      }
+    ]
+  },
+  {
+    "title": "Run the activity lifecycle",
+    "summary": "Choose a club, plan an activity, and publish its story.",
+    "items": [
+      {
+        "number": 12,
+        "caption": "Select the club whose activities you want to manage."
+      },
+      {
+        "number": 13,
+        "caption": "Choose creation, editing, cancellation or journaling."
+      },
+      {
+        "number": 14,
+        "caption": "Enter a new activity\u2019s details in the creation form."
+      },
+      {
+        "number": 15,
+        "caption": "Select an activity before requesting an edit."
+      },
+      {
+        "number": 16,
+        "caption": "The past-activity guard blocks editing after an event has ended."
+      },
+      {
+        "number": 17,
+        "caption": "The cancellation selector is empty after the recorded cancellation."
+      },
+      {
+        "number": 18,
+        "caption": "Choose an event before opening its journal."
+      },
+      {
+        "number": 19,
+        "caption": "Edit the journal narrative and photo reference in the owner form."
+      }
+    ]
+  },
+  {
+    "title": "Review with context",
+    "summary": "Teachers see organizations, membership and participation together.",
+    "items": [
+      {
+        "number": 21,
+        "caption": "The teacher board brings review and administration tasks together."
+      },
+      {
+        "number": 22,
+        "caption": "Teachers browse the organization directory from their own role."
+      },
+      {
+        "number": 23,
+        "caption": "The teacher detail view shows the club and its activities."
+      },
+      {
+        "number": 24,
+        "caption": "Teachers can inspect the club member directory."
+      },
+      {
+        "number": 25,
+        "caption": "Review attendance and rating summaries for club participation."
+      },
+      {
+        "number": 30,
+        "caption": "Manage official organization membership from its summary."
+      }
+    ]
+  },
+  {
+    "title": "Coordinate the institution",
+    "summary": "Official events and council years preserve institutional continuity.",
+    "items": [
+      {
+        "number": 26,
+        "caption": "Review official events and their registered students."
+      },
+      {
+        "number": 31,
+        "caption": "Open the official event organization and its event list."
+      },
+      {
+        "number": 33,
+        "caption": "Prepare an official event using the teacher creation form."
+      },
+      {
+        "number": 32,
+        "caption": "Inspect the Student Council organization page."
+      },
+      {
+        "number": 27,
+        "caption": "Browse the current council and archived council crews."
+      },
+      {
+        "number": 28,
+        "caption": "Prepare a new council year with its crew assignments."
+      },
+      {
+        "number": 29,
+        "caption": "Open a past year to inspect its archived council crew."
+      }
+    ]
+  },
+  {
+    "title": "Stay informed, respect boundaries",
+    "summary": "Notifications guide attention; guard screens explain unavailable access.",
+    "items": [
+      {
+        "number": 42,
+        "caption": "Inspect notifications and their read state from the dashboard."
+      },
+      {
+        "number": 38,
+        "caption": "A student reaching a teacher-only page sees Access Denied."
+      },
+      {
+        "number": 39,
+        "caption": "A missing club identifier produces the Club Not Found guard."
+      }
+    ]
+  }
+]

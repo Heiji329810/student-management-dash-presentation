@@ -1,9 +1,9 @@
 async (page) => {
  const base=page.url().split(/[?#]/)[0];
- const problems=[],views=[];const count=await page.locator('.slide').count();
+ const problems=[],views=[];const count=20;
  await page.reload();await page.mouse.move(100,100);
  async function inspect(label){
-  await page.locator('body').click({position:{x:3,y:3}});await page.keyboard.press('Home');
+  await page.locator('body').click({position:{x:3,y:3}});await page.goto(base+'#slide-1');
   const v=await page.evaluate(()=>({width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,background:getComputedStyle(document.body).backgroundColor,fullscreen:Boolean(document.fullscreenElement)}));
   for(let i=0;i<count;i++){
    if(i)await page.keyboard.press('ArrowRight');
@@ -15,7 +15,7 @@ async (page) => {
     return {background:getComputedStyle(el).backgroundColor,x:b.x,y:b.y,width:b.width,height:b.height,overflow,missing,controlsHidden:document.querySelector('#presentation-menu').hidden};
    });
    if(r.background!=='rgb(24, 42, 44)'||r.overflow.length||r.missing.length||r.x!==0||r.y!==0||Math.abs(r.width-v.width)>1||Math.abs(r.height-v.height)>1||!r.controlsHidden)problems.push({view:label,slide:i+1,...r});
-   if([0,1,2,4,16,19,20,35].includes(i))await page.screenshot({path:`output/playwright/blue-${label}-slide-${i+1}.png`});
+   if([0,1,2,4,16,19,20].includes(i))await page.screenshot({path:`output/playwright/blue-${label}-slide-${i+1}.png`});
   }
   views.push({label,...v,slides:count});
  }
@@ -36,14 +36,13 @@ async (page) => {
   await page.keyboard.press('Escape');if(!await page.locator('#presentation-menu').isHidden())throw Error('Escape close');
   await page.keyboard.press('f');
  }
- await page.locator('body').click({position:{x:3,y:3}});await page.keyboard.press('Home');await page.keyboard.press('Space');
+ await page.locator('body').click({position:{x:3,y:3}});await page.goto(base+'#slide-1');await page.keyboard.press('Space');
  if(await page.locator('#jump').inputValue()!=='1')throw Error('Space navigation');
  await page.keyboard.press('ArrowLeft');if(await page.locator('#jump').inputValue()!=='0')throw Error('Arrow navigation');
- await page.keyboard.press('o');if(await page.locator('.slide:visible').count()!==62)throw Error('Overview');await page.keyboard.press('Escape');
+ await page.keyboard.press('o');if(await page.locator('.slide:visible').count()!==21)throw Error('Overview');await page.keyboard.press('Escape');
  await page.locator('#controls-toggle').hover();if(await page.locator('#presentation-menu').isHidden())throw Error('Hover reveal');
  await page.mouse.move(100,100);if(!await page.locator('#presentation-menu').isHidden())throw Error('Hover dismiss');
- await page.keyboard.press('?');await page.locator('#jump').selectOption('35');
- if(await page.locator('.slide.active h1').innerText()!=='Past activity edit guard')throw Error('Label drift');
+ await page.keyboard.press('?');await page.locator('#jump').selectOption('20');
  await page.locator('#controls-close').click();if(await page.locator('#controls-toggle').getAttribute('aria-expanded')!=='false')throw Error('Disclosure aria');
  await page.locator('body').click({position:{x:3,y:3}});await page.keyboard.press('Tab');
  const keyboardFocus=await page.evaluate(()=>document.activeElement.id);
@@ -58,11 +57,11 @@ async (page) => {
  await mobile.screenshot({path:'output/playwright/blue-touch-menu.png',fullPage:true});
  const close=await mobile.locator('#controls-close').boundingBox();await mobile.touchscreen.tap(close.x+close.width/2,close.y+close.height/2);
  if(!await mobile.locator('#presentation-menu').isHidden())throw Error('Touch dismiss');
- for(const i of [0,1,2,4,16,19,20,35]){
+ for(const i of [0,1,2,4,16,19,20]){
   await mobile.goto(`${base}#slide-${i+1}`);
   const dims=await mobile.evaluate(()=>({w:innerWidth,scroll:document.documentElement.scrollWidth}));if(dims.scroll>dims.w)problems.push({mobileSlide:i+1,horizontalOverflow:dims});
   await mobile.screenshot({path:`output/playwright/blue-mobile-slide-${i+1}.png`,fullPage:true});
  }
- await touch.close();await page.emulateMedia({media:'print'});await page.pdf({path:'verification/CC-Student-Management-HTML.pdf',preferCSSPageSize:true,printBackground:true});await page.emulateMedia({media:'screen'});
- return {nativeViewportNull:native,views,keyboardFocus,navigation:'Arrows / Space / F / O / ? / Escape passed',disclosure:'hover / keyboard focus / touch / aria / menu bounds passed',mobile:'390x844 / eight representative slides',problems};
+ await touch.close();
+ return {nativeViewportNull:native,views,keyboardFocus,navigation:'Arrows / Space / F / O / ? / Escape passed',disclosure:'hover / keyboard focus / touch / aria / menu bounds passed',mobile:'390x844 / seven representative slides',problems};
 }

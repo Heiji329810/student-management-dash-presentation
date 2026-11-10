@@ -27,3 +27,8 @@ The 42 gallery captures cover all 26 concrete route patterns / 25 routed page co
 ## Visual-review correction
 
 The original `16-owner-edit-activity-form.png` capture shows **Activity Has Ended**, not an editable form. The presentation labels that exact capture **Past activity edit guard**. `screenshot-labels.json` applies this correction only while the image hash matches, so a future corrected capture can use its updated source caption. The copied source gallery index is retained as provenance; this observed screen state takes precedence over its completed-event editing sentence.
+
+
+## Gallery library and format design
+
+Swiper 11.2.10 bundle JS/CSS and MIT license are pinned under `assets/vendor/swiper-11.2.10/`, obtained from the versioned npm distribution through jsDelivr. Official API consulted: https://swiperjs.com/swiper-api (wrapper/slide structure, initialization, touch, slide methods and accessibility). `workflows.json` defines seven chapters and concise observed-state captions for all 42 captures. HTML uses one interactive gallery slide; static PowerPoint/PDF use seven contact-sheet overview pages with the same ordered images/captions. No new application screenshot was fabricated or captured for this redesign.

@@ -20,16 +20,23 @@
     interval.value = String(seconds);
     schedule();
   }
+  let gallery;
+  const atlas = document.querySelector('.atlas');
+  const isAtlas = () => slides[current] === atlas && !document.body.classList.contains('overview');
+  function advance() {
+    if (isAtlas() && gallery.activeIndex < gallery.slides.length - 1) { gallery.slideNext(); schedule(); }
+    else { if (isAtlas()) gallery.slideTo(0, 0); show((current + 1) % slides.length); }
+  }
   function schedule() {
     clearTimeout(timer);
-    if (playing && !document.hidden) timer = setTimeout(() => show((current + 1) % slides.length), seconds * 1000);
+    if (playing && !document.hidden) timer = setTimeout(advance, seconds * 1000);
   }
   function setPlaying(value) {
     playing = value;
     if (playing && document.body.classList.contains('overview')) overview();
     playback.textContent = playing ? 'Pause slideshow' : 'Play slideshow';
     playback.setAttribute('aria-pressed', String(playing));
-    status.textContent = playing ? `Playing · ${seconds} seconds per slide · repeats after the last slide` : 'Slideshow paused';
+    status.textContent = playing ? `Playing · ${seconds} seconds per slide / capture · repeats after the gallery` : 'Slideshow paused';
     schedule();
   }
   let keyboardInput = false;
@@ -55,6 +62,7 @@
     history.replaceState(null, '', '#slide-' + (current + 1));
     document.title = `${current + 1} / ${slides.length} · CC Student Management`;
     window.scrollTo({ top: 0, behavior: 'instant' });
+    if (gallery && isAtlas()) { if (!gallery.initialized) gallery.init(); gallery.update(); updateGallery(gallery); }
     schedule();
   }
   function overview() {
@@ -88,7 +96,7 @@
   jump.onchange = () => show(Number(jump.value));
   document.querySelector('#overview').onclick = overview;
   document.querySelector('#fullscreen').onclick = fullscreen;
-  document.querySelector('#print').onclick = () => { setPlaying(false); setMenu(false); window.print(); };
+  document.querySelector('#print').onclick = () => { setPlaying(false); setMenu(false); window.open('CC-Student-Management.pdf', '_blank', 'noopener'); };
   toggle.onclick = () => setMenu(menu.hidden);
   document.querySelector('#controls-close').onclick = () => setMenu(false, true);
   toggle.addEventListener('focus', () => { if (keyboardInput) setMenu(true); });
@@ -118,6 +126,14 @@
     if (event.key.toLowerCase() === 'f') { event.preventDefault(); fullscreen(); return; }
     if (event.key.toLowerCase() === 'o') { event.preventDefault(); overview(); return; }
     if (event.key === ' ' && ['BUTTON', 'A'].includes(event.target.tagName)) return;
+    if (isAtlas() && ['ArrowRight','ArrowLeft','PageDown','PageUp','Home','End',' '].includes(event.key) && !event.target.closest('.control-dock')) {
+      event.preventDefault(); setPlaying(false);
+      if (['ArrowRight','PageDown',' '].includes(event.key)) gallery.slideNext();
+      if (['ArrowLeft','PageUp'].includes(event.key)) gallery.slidePrev();
+      if (event.key === 'Home') gallery.slideTo(0);
+      if (event.key === 'End') gallery.slideTo(gallery.slides.length-1);
+      return;
+    }
     if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(current + 1); }
     if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(current - 1); }
     if (event.key === 'Home') { event.preventDefault(); show(0); }
@@ -127,6 +143,35 @@
     if (document.body.classList.contains('overview') && !event.target.closest('a')) { overview(); show(i); }
   }));
   window.addEventListener('hashchange', () => show(Number(location.hash.replace('#slide-', '')) - 1 || 0));
+  const workflowButtons = [...document.querySelectorAll('[data-workflow]')];
+  const summaries = ["Sign in, find a club, and inspect its people.", "Applications become participation; journals and ratings close the loop.", "Ownership opens a focused path to members and attendance.", "Choose a club, plan an activity, and publish its story.", "Teachers see organizations, membership and participation together.", "Official events and council years preserve institutional continuity.", "Notifications guide attention; guard screens explain unavailable access."];
+  function updateGallery(swiper) {
+    const frame = swiper.slides[swiper.activeIndex];
+    if (!frame) return;
+    const group = Number(frame.dataset.group);
+    document.querySelector('#gallery-count').textContent = `${String(swiper.activeIndex+1).padStart(2,'0')} / 42 · Chapter ${group+1} · ${frame.dataset.local} / ${frame.dataset.total}`;
+    document.querySelector('#workflow-summary').textContent = summaries[group];
+    workflowButtons.forEach((button, i) => button.setAttribute('aria-current', String(i === group)));
+    swiper.slides.forEach((slide,i) => { slide.inert = i !== swiper.activeIndex; });
+    document.querySelector('#gallery-prev').disabled = swiper.isBeginning;
+    document.querySelector('#gallery-next').disabled = swiper.isEnd;
+  }
+  gallery = new Swiper('#workflow-swiper', {
+    init: false,
+    speed: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420,
+    spaceBetween: 24, slidesPerView: 1, grabCursor: true,
+    keyboard: { enabled: false },
+    a11y: { enabled: true, containerMessage: 'Workflow screenshot gallery', slideLabelMessage: 'Capture {{index}} of {{slidesLength}}' },
+    on: { init: updateGallery, slideChange: updateGallery, touchStart: () => setPlaying(false) }
+  });
+  workflowButtons.forEach((button, group) => button.onclick = () => {
+    setPlaying(false);
+    gallery.slideTo([...gallery.slides].findIndex(slide => Number(slide.dataset.group) === group));
+  });
+  document.querySelector('#gallery-prev').onclick = () => { setPlaying(false); gallery.slidePrev(); };
+  document.querySelector('#gallery-next').onclick = () => { setPlaying(false); gallery.slideNext(); };
+  atlas.addEventListener('pointerdown', () => setPlaying(false));
+  atlas.addEventListener('focusin', () => setPlaying(false));
   setIntervalSeconds(params.get('interval') || 12);
   show(current);
   setPlaying(params.get('autoplay') === '1');
