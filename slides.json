@@ -1,0 +1,341 @@
+[
+  {
+    "type": "cover",
+    "chapter": "CC / PROJECT PRESENTATION",
+    "title": "Student life.\nOrganized.",
+    "subtitle": "Student Management Dashboard",
+    "body": "A shared place for clubs, activities and participation.",
+    "image": "03-student-dashboard.png",
+    "note": "Introduce this as a club and extracurricular management project. It serves students, student club owners and teachers. The screenshots use fictional demonstration data."
+  },
+  {
+    "type": "cards",
+    "chapter": "01 / THE PROBLEM",
+    "title": "One connected school experience",
+    "subtitle": "Bring the steps around an activity into one place.",
+    "cards": [
+      [
+        "Discover",
+        "Students need a clear way to find clubs and upcoming activities."
+      ],
+      [
+        "Coordinate",
+        "Club owners need registrations, member lists and attendance together."
+      ],
+      [
+        "Keep a record",
+        "Teachers need visibility into applications, participation and council teams."
+      ]
+    ],
+    "takeaway": "The project connects discovery, organization and reflection.",
+    "note": "Frame these as needs the project addresses, not a measured claim about a specific school's current processes."
+  },
+  {
+    "type": "cards",
+    "chapter": "02 / WHO USES IT",
+    "title": "Three perspectives. Clear responsibilities.",
+    "subtitle": "Club ownership is a responsibility within the student role.",
+    "cards": [
+      [
+        "Student",
+        "Browse and join clubs. Register for activities. Read journals and share feedback."
+      ],
+      [
+        "Student club owner",
+        "Manage owned clubs, plan activities, record attendance and publish journals."
+      ],
+      [
+        "Teacher",
+        "Review club applications, organize official events and manage student council years."
+      ]
+    ],
+    "takeaway": "The original internal teacher role is named “founder”; student club founders stay students.",
+    "note": "There are two account roles: student and founder. The founder role means teacher. Club owner authorization depends on the student's ownership of a specific club."
+  },
+  {
+    "type": "workflow",
+    "chapter": "03 / THE EXPERIENCE",
+    "title": "From an idea to a shared memory",
+    "subtitle": "A complete journey around a school club.",
+    "steps": [
+      [
+        "01",
+        "Apply",
+        "Propose a club"
+      ],
+      [
+        "02",
+        "Approve",
+        "Teacher reviews"
+      ],
+      [
+        "03",
+        "Organize",
+        "Plan an activity"
+      ],
+      [
+        "04",
+        "Participate",
+        "Register and attend"
+      ],
+      [
+        "05",
+        "Reflect",
+        "Journal and feedback"
+      ]
+    ],
+    "takeaway": "Notifications connect the people involved at each stage.",
+    "note": "Club applications are reviewed directly by teachers. Election services exist in the backend but are not part of this rendered workflow."
+  },
+  {
+    "type": "screen",
+    "chapter": "04 / STUDENT EXPERIENCE",
+    "title": "A useful starting point",
+    "subtitle": "See clubs, registrations and community activity at a glance.",
+    "image": "03-student-dashboard.png",
+    "points": [
+      "Dashboard summaries come from stored application data.",
+      "Club and activity links lead into the next action.",
+      "Language and theme controls support the existing interface."
+    ],
+    "tag": "Student / Home",
+    "note": "The student dashboard includes club information, participation summaries and rankings. Teachers see their own management board at the same home route."
+  },
+  {
+    "type": "screen",
+    "chapter": "04 / STUDENT EXPERIENCE",
+    "title": "Find a club. Find your people.",
+    "subtitle": "Browse categories and open a club to explore its activities.",
+    "image": "04-student-clubs.png",
+    "points": [
+      "Explore clubs and organizations by category.",
+      "Join or leave ordinary clubs from the interface.",
+      "Official organization membership is managed by teachers."
+    ],
+    "tag": "Student / Clubs & Organizations",
+    "note": "Joining a club and registering for a specific activity are distinct operations. Founders must remain members of their own clubs."
+  },
+  {
+    "type": "screen",
+    "chapter": "04 / STUDENT EXPERIENCE",
+    "title": "Make participation straightforward",
+    "subtitle": "View an activity, register, then find it in My Registrations.",
+    "image": "05-student-club-detail.png",
+    "points": [
+      "View upcoming and past activities for a club.",
+      "Registration checks available capacity and whether the activity is open.",
+      "My Registrations brings a student's bookings together."
+    ],
+    "tag": "Student / Club detail",
+    "note": "Registration is stored on the server. The UI supports unregistering through the club page and My Registrations. The backend enforces student identity, capacity and activity status."
+  },
+  {
+    "type": "screen",
+    "chapter": "05 / CLUB APPLICATIONS",
+    "title": "Turn a club idea into a proposal",
+    "subtitle": "A structured application connects students with teacher review.",
+    "image": "02-student-application-result.png",
+    "points": [
+      "Provide club details, category and founder names.",
+      "Official-club requests also identify a managing teacher.",
+      "Track the decision and read the teacher's feedback."
+    ],
+    "tag": "Student / Create Club & My Applications",
+    "note": "The pictured example shows a rejected application and feedback. Approval establishes the club directly; rejection requires a teacher comment."
+  },
+  {
+    "type": "screen",
+    "chapter": "06 / CLUB OWNER EXPERIENCE",
+    "title": "One place to run a club",
+    "subtitle": "Owned-club tools separate member work from activity planning.",
+    "image": "13-owner-activity-options.png",
+    "points": [
+      "Open member rosters and weekly check-in.",
+      "Add and edit activities for an owned club.",
+      "Cancel upcoming activities with a participant message."
+    ],
+    "tag": "Student club owner / Activity management",
+    "note": "Club management is restricted to the owning student. An owner of one club cannot manage another club. Cancellation hides the activity from current views while retaining metadata on the server."
+  },
+  {
+    "type": "screen",
+    "chapter": "06 / CLUB OWNER EXPERIENCE",
+    "title": "Record attendance by week",
+    "subtitle": "A calendar view turns participation into a usable record.",
+    "image": "11-owner-attendance.png",
+    "points": [
+      "Choose a week and mark present, absent or leave.",
+      "Records belong to a club, student and week.",
+      "Three present sessions help determine rating eligibility."
+    ],
+    "tag": "Student club owner / Weekly check-in",
+    "note": "The current product permits owner-entered attendance, including the owner's own attendance. There is no teacher-approval workflow. Week keys follow local calendar Mondays."
+  },
+  {
+    "type": "screen",
+    "chapter": "07 / JOURNALS & COMMUNITY",
+    "title": "Give each activity a story",
+    "subtitle": "Publish reflections, participants, photos and a social link.",
+    "image": "07-student-published-journal.png",
+    "points": [
+      "Club owners create and edit the activity journal.",
+      "Authenticated users can view published journals.",
+      "Likes, rated comments and replies keep the conversation going."
+    ],
+    "tag": "Community / Published activity journal",
+    "note": "Journal editing supports up to eight supported images and selecting registered participants. Published photos are served through authenticated API routes. Authors can delete their own comment trees."
+  },
+  {
+    "type": "screen",
+    "chapter": "07 / JOURNALS & COMMUNITY",
+    "title": "Feedback grounded in participation",
+    "subtitle": "Club ratings combine attendance eligibility with community feedback.",
+    "image": "22-member-rate-club.png",
+    "fallback": "visible-member-rating.png",
+    "points": [
+      "Students must be members with three present sessions to rate.",
+      "Ratings cover four dimensions plus an overall score.",
+      "Students can update their rating; teachers can review summaries."
+    ],
+    "tag": "Student / Rate My Club",
+    "note": "Ratings are stored per student and club and can be updated. Named community feedback is visible within the authenticated application. Three present sessions and current membership are required before rating."
+  },
+  {
+    "type": "screen",
+    "chapter": "08 / TEACHER EXPERIENCE",
+    "title": "Support clubs with clear decisions",
+    "subtitle": "The teacher home page brings applications and school activity together.",
+    "image": "23-teacher-dashboard.png",
+    "fallback": "visible-teacher-application-rejected.png",
+    "points": [
+      "Review pending club applications.",
+      "Approve a club or reject it with a reason.",
+      "Applicants receive the result and feedback."
+    ],
+    "tag": "Teacher / Management board",
+    "note": "The teacher role is internally named founder. This is a separate rendering of the home route, not a third account role. Decisions are stored and the applicant receives a notification."
+  },
+  {
+    "type": "screen",
+    "chapter": "08 / TEACHER EXPERIENCE",
+    "title": "Coordinate official school activity",
+    "subtitle": "Teachers publish official events and review participation.",
+    "image": "25-teacher-official-events.png",
+    "fallback": "visible-teacher-registered-roster.png",
+    "points": [
+      "Create official events using the activity form.",
+      "View students registered for each event.",
+      "Review club attendance and rating summaries."
+    ],
+    "tag": "Teacher / Official events & participation",
+    "note": "Teachers can also manage membership in the School Official Events category. The roster includes the details needed for teacher management."
+  },
+  {
+    "type": "screen",
+    "chapter": "08 / TEACHER EXPERIENCE",
+    "title": "Keep council years connected",
+    "subtitle": "Create a new team while preserving earlier council terms.",
+    "image": "26-teacher-student-council.png",
+    "fallback": "visible-council-rollover.png",
+    "points": [
+      "Set the school year and departments.",
+      "Search and select students for the new crew.",
+      "Archive the previous term and inspect its details later."
+    ],
+    "tag": "Teacher / Student Council",
+    "note": "Starting a council term replaces current council membership with the new departments' union and archives the previous term. The original UI has no standalone department assign/remove screen."
+  },
+  {
+    "type": "screen",
+    "chapter": "09 / KEEP PEOPLE INFORMED",
+    "title": "Close the loop with notifications",
+    "subtitle": "Updates appear where people can act on them.",
+    "image": "visible-member-cancellation-notice.png",
+    "points": [
+      "Application decisions return to the applicant.",
+      "Registrations and journal interactions inform the relevant people.",
+      "Cancellation notices preserve the message for participants."
+    ],
+    "tag": "Student / Cancellation notification",
+    "note": "This screenshot is from a captured workflow state, rather than a separate route. Read status and notification lists are scoped to the signed-in recipient."
+  },
+  {
+    "type": "architecture",
+    "chapter": "10 / HOW IT WORKS",
+    "title": "A shared UI. A persistent backend.",
+    "subtitle": "A TypeScript monorepo connects the screens to stored data.",
+    "cards": [
+      [
+        "apps/web",
+        "React + Vite",
+        "Routes, forms and role-aware views"
+      ],
+      [
+        "shared",
+        "Zod + TypeScript",
+        "Request / response contracts and helpers"
+      ],
+      [
+        "apps/server",
+        "Express 5 + Better Auth",
+        "Sessions, validation and authorization"
+      ],
+      [
+        "PostgreSQL",
+        "Drizzle ORM + migrations",
+        "Users, clubs, activities, records and photos"
+      ]
+    ],
+    "takeaway": "The server checks identity and permissions before saving a command in a transaction.",
+    "note": "The frontend reads /api/state and sends /api/commands; Better Auth handles /api/auth/*. Writes use a transaction with a project-specific advisory lock. Core relationships use relational tables; complex records use separate typed JSONB tables."
+  },
+  {
+    "type": "cards",
+    "chapter": "11 / IMPLEMENTATION CHOICES",
+    "title": "Make the records dependable",
+    "subtitle": "Checks live alongside the data and workflows.",
+    "cards": [
+      [
+        "Identity",
+        "Better Auth sessions identify the user. Teacher and owner permissions are checked by the server."
+      ],
+      [
+        "Validation",
+        "Shared Zod contracts check command inputs and responses. Capacity, attendance and journal rules are enforced."
+      ],
+      [
+        "Persistence",
+        "PostgreSQL stores business data and journal photos. Transactions keep connected writes together."
+      ]
+    ],
+    "takeaway": "Students receive scoped data; roster contact access depends on role and ownership.",
+    "note": "Do not describe this as a production security certification. The aggregate state loading and serialized writes fit the current small application; larger deployments would need additional scalability work."
+  },
+  {
+    "type": "scope",
+    "chapter": "12 / WHAT IS IN SCOPE",
+    "title": "Show the product as it exists",
+    "subtitle": "Visible workflows and backend-only services are distinct.",
+    "cards": [
+      [
+        "Visible in this presentation",
+        "Clubs, applications, activities, registrations, attendance, journals, feedback, official events, council years and notifications."
+      ],
+      [
+        "Backend-only today",
+        "Club and event election services exist, but election links redirect to Clubs. There is no rendered election or scoring screen."
+      ]
+    ],
+    "takeaway": "Screenshot evidence demonstrates captured interface states. Test results are reported separately in the project handoff.",
+    "note": "The existing docs/action-inventory.json lists 31 commands. Some are dormant. Do not equate action count with reachable pages or describe all tests as passed while final verification is running."
+  },
+  {
+    "type": "end",
+    "chapter": "CC / PROJECT TAKEAWAY",
+    "title": "Discover. Participate.\nOrganize. Reflect.",
+    "subtitle": "One connected workflow for extracurricular life.",
+    "body": "Students take part. Club owners coordinate. Teachers support and oversee.",
+    "takeaway": "Explore the page gallery next, or open the dashboard for a live walkthrough.",
+    "note": "The appendix contains the captured route and role views. All screenshots use fictional demonstration data. The presentation itself is a standalone local artifact."
+  }
+]
