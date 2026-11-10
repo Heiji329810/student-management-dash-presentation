@@ -136,5 +136,19 @@
     "tracked_files_and_zip": "no private work files, environments, browser sessions or credentials",
     "credential_patterns": "no GitHub token, private key, credential URL or PostgreSQL credential URL found",
     "auth": "temporary askpass outside repository; credential helper disabled per git command"
+  },
+  "committed_fresh_clone": {
+    "checkout": "fresh local Git clone of committed release, no preexisting environment",
+    "offline": true,
+    "protocol": "file:",
+    "slides": 21,
+    "captures": 42,
+    "swiper": true,
+    "images": true,
+    "title": "21 / 21 \u00b7 CC Student Management",
+    "external_requests": [],
+    "errors": [],
+    "keyboard": "passed",
+    "standalone_gallery": "all 42 images loaded"
   }
 }
